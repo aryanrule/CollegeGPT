@@ -99,7 +99,7 @@ router.post(
       });
 
           const result = await collection.query({
-            queryTexts: ["Problem Solving"],
+            queryTexts: ["skills"], 
             nResults: 3
           });
 
