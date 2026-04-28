@@ -5,6 +5,14 @@ const uploadRouter = require('./routes/upload');
 dotenv.config();
 
 const app = express();
+const { ChromaClient } = require("chromadb");
+const {client} = require("./database/connectdb");
+
+async function test(){
+     const collection = await client.listCollections();
+     console.log(collection);
+}
+test();  
 
 /* middlewares */
 app.use(cors());

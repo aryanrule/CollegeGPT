@@ -3,7 +3,7 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 const pdfParse = require("pdf-parse-new");
-
+const {getCollection} = require('../database/connectdb');
 const router = express.Router();
 
 /* storage */
@@ -76,8 +76,29 @@ router.post(
 
       const chunks = chunkText(cleanedText);
 
-      global.pdfChunks = chunks;
+      // global.pdfChunks = chunks;
+      const collection = await getCollection();
+      console.log(chunks); 
+      console.log(chunks[0]); 
+      
+      await collection.add({
+          ids: chunks.map((_, i) => `${req.file.filename}_${i}`),
+          documents: chunks,
+          metadatas: chunks.map(() => ({
+          source: req.file.filename,
+          })),
+      });
 
+      const stored = await collection.get();
+      stored.documents.forEach((doc, i) => {
+      console.log("---------------");
+      console.log("Chunk:", i + 1);
+      console.log("ID:", stored.ids[i]);
+      console.log("Text:", doc);
+      console.log("Meta:", stored.metadatas[i]);
+      });
+
+    
       return res.status(200).json({
         success: true,
         message: "PDF uploaded and parsed successfully",
