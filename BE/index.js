@@ -3,7 +3,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const uploadRouter = require('./routes/upload');
 dotenv.config();
-
+const chatRouter = require('./routes/chat');  
 const app = express();
 const { ChromaClient } = require("chromadb");
 const {client} = require("./database/connectdb");
@@ -28,6 +28,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1" , uploadRouter);
+app.use("/api/v1" , chatRouter);  
 
 app.use((req,res)=>{
   res.status(404).json({ message:"Route not found" });

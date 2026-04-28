@@ -98,20 +98,20 @@ router.post(
       console.log("Meta:", stored.metadatas[i]);
       });
 
-      const result = await collection.query({
-  queryTexts: ["Problem Solving"],
-  nResults: 3
-});
+          const result = await collection.query({
+            queryTexts: ["Problem Solving"],
+            nResults: 3
+          });
 
-console.log("Top Matches:");
+          console.log("Top Matches:");
 
-result.documents[0].forEach((doc, i) => {
-  console.log("---------------");
-  console.log("Rank:", i + 1);
-  console.log("ID:", result.ids[0][i]);
-  console.log("Distance:", result.distances[0][i]);
-  console.log("Text:", doc);
-});
+          result.documents[0].forEach((doc, i) => {
+            console.log("---------------");
+            console.log("Rank:", i + 1);
+            console.log("ID:", result.ids[0][i]);
+            console.log("Distance:", result.distances[0][i]);
+            console.log("Text:", doc);
+          });
 
       return res.status(200).json({
         success: true,
