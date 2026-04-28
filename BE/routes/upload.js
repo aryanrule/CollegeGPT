@@ -80,7 +80,7 @@ router.post(
       const collection = await getCollection();
       console.log(chunks); 
       console.log(chunks[0]); 
-      
+
       await collection.add({
           ids: chunks.map((_, i) => `${req.file.filename}_${i}`),
           documents: chunks,
@@ -98,7 +98,21 @@ router.post(
       console.log("Meta:", stored.metadatas[i]);
       });
 
-    
+      const result = await collection.query({
+  queryTexts: ["Problem Solving"],
+  nResults: 3
+});
+
+console.log("Top Matches:");
+
+result.documents[0].forEach((doc, i) => {
+  console.log("---------------");
+  console.log("Rank:", i + 1);
+  console.log("ID:", result.ids[0][i]);
+  console.log("Distance:", result.distances[0][i]);
+  console.log("Text:", doc);
+});
+
       return res.status(200).json({
         success: true,
         message: "PDF uploaded and parsed successfully",
