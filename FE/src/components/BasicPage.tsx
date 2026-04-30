@@ -1,10 +1,6 @@
-import { Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
-import Login from "./pages/Login";
-
-function App() {
+function BasicPage() {
   return (
-<div className="min-h-screen bg-gray-100 flex items-center justify-center">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       
       <div className="bg-white p-8 rounded-2xl shadow-md w-[350px]">
         
@@ -25,12 +21,7 @@ function App() {
       </div>
 
     </div>
-
-    // <Routes>
-    //   <Route path="/" element={<Home />} />
-    //   <Route path="/login" element={<Login />} />
-    // </Routes>
   );
 }
 
-export default App;
+export default BasicPage;
