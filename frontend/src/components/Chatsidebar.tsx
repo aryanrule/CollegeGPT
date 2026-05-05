@@ -11,8 +11,7 @@ const ChatSidebar = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-[#f0f4f9] px-4 py-6">
-
+<div className={`${extended ? "w-[250px]" : "w-[80px]"} min-h-screen flex flex-col justify-between bg-[#f0f4f9] px-4 py-6 transition-all duration-300`}>
       {/* TOP */}
       <div>
         {/* MENU */}

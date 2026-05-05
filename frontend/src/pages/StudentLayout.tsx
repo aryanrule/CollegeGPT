@@ -1,11 +1,14 @@
 import ChatSidebar from "../components/chatsidebar";
 import StudentDashboard from "../components/Studentdashboard";
+
+
+
 const StudentLayout = () => {
   return (
-    <div className="flex">
+    <div className="flex h-screen"> 
 
       {/* SIDEBAR */}
-      <ChatSidebar />
+      <ChatSidebar  />
 
       {/* MAIN CHAT AREA */}
       <StudentDashboard />

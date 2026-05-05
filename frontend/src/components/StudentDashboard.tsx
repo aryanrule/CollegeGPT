@@ -15,7 +15,7 @@ const StudentDashboard = () => {
   } = usechatContext()!;
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col flex-1 h-screen w-full">
 
       {/* NAV */}
       <div className="flex justify-between items-center flex-shrink-0">
@@ -51,11 +51,11 @@ const StudentDashboard = () => {
 
               {/* RESULT DATA */}
               <div className="flex gap-3 pb-6">
-                <img src={assets.gemini_icon} className="w-[50px] self-start" />
+                
                 {loading ? (
                   <Loading />
                 ) : (
-                  <p
+                  <div
                     className="text-[17px] font-light leading-7"
                     dangerouslySetInnerHTML={{ __html: resultdata }}
                   />
