@@ -4,12 +4,49 @@ import { assets } from "../assets/assets/assets";
 const AdminDashboard = () => {
   const [files, setFiles] = useState<FileList | null>(null);
 
-  const handleUpload = () => {
-    if (!files) return;
+const handleUpload = async () => {
+  if (!files || files.length === 0) {
+    alert("Please select at least one file");
+    return;
+  }
 
-    console.log(files);
-    // 🔥 later: send to backend (multer / s3)
-  };
+  try {
+    const formData = new FormData();
+
+    // append files
+    Array.from(files).forEach((file) => {
+      formData.append("pdf", file);
+    });
+
+    console.log(formData); 
+    const response = await fetch("http://localhost:5000/api/v1/upload", {
+      method: "POST",
+      body: formData,
+    });
+
+    // handle non-JSON safely
+    let data;
+    try {
+      data = await response.json();
+    } catch {
+      data = null;
+    }
+
+    if (!response.ok) {
+      throw new Error(data?.message || "Upload failed");
+    }
+
+    console.log("✅ Upload success:", data);
+    alert("Files uploaded successfully 🚀");
+
+    // reset state
+    setFiles(null);
+
+  } catch (error: any) {
+    console.error("❌ Upload error:", error);
+    alert(error.message || "Something went wrong");
+  }
+};
 
   return (
     <div className="flex-1 min-h-screen pb-[15vh] relative">

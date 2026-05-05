@@ -30,6 +30,12 @@ type Props = {
   children: ReactNode;
 };
 
+const dummycontent = 
+"This is a sample paragraph of dummy content designed to simulate a long response in a chat interface. It helps in testing how your layout behaves when a large amount of text is rendered dynamically, ensuring that the content scrolls properly without breaking the design or stretching the screen unexpectedly. By using placeholder text like this, you ca Testing with extended placeholder content allows developers to identify potential performance bottlenecks and rendering issues early in the development process. It also helps in evaluating how text wraps, how spacing behaves, and whether the design remains visually appealing under stress. By proactively addressing these concerns, you reduce the chances of encountering layout bugs when real user data begins to flow through the systemn verify that spacing, font size, and readability remain consistent across different screen sizes, while also checking that key elements such as the input box and navigation bar stay fixed in their intended positions. This approach allows you to build a more stable and user-friendly interface before integrating real API responses into your application.";
+function getdummyresponse () {
+    return dummycontent;
+}
+
 const ChatContextProvider = ({ children }: Props) => {
   const [input, setInput] = useState<string>("");
   const [recentPrompt, setRecentPrompt] = useState<string>("");
@@ -53,28 +59,32 @@ const ChatContextProvider = ({ children }: Props) => {
     setShowResult(true);
     setRecentPrompt(input);
 
-    const newInput = input;
+    const question = input;
 
-    setPreviousPrompt((prev) => [...prev, newInput]);
+    setPreviousPrompt((prev) => [...prev, question]);
     setInput("");
 
     try {
-      const response = await fetch(
-        "https://ai-verse-xnf4.onrender.com/api/getdata",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ prompt: newInput }),
-        }
-      );
+      // const response = await fetch(
+      //   "http://localhost:5000/api/v1/chat",
+      //   {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify({ question : question }),
+      //   }
+      // );
+      // console.log("response" , response);  
 
-      const data = await response.json();
-
-      const responseInText =
-        data?.response?.candidates?.[0]?.content?.parts?.[0]?.text || "";
-
+      // const data = await response.json();
+      // console.log("data" , data);  
+     
+      // // const responseInText =
+      // //   data?.response?.candidates?.[0]?.content?.parts?.[0]?.text || "";
+     
+      // const responseInText = data?.answer;
+      const responseInText = getdummyresponse();
       // formatting bold (**text** → <b>text</b>)
       let responseArray = responseInText.split("**");
       let newResponse = "";

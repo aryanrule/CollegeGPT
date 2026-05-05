@@ -12,6 +12,7 @@ const ai = new GoogleGenAI({});
 router.post("/chat", async function (req, res) {
   try {
     const { question } = req.body;
+    console.log("question", question);   
 
     /* validation */
     if (!question || question.trim() === "") {
@@ -23,15 +24,17 @@ router.post("/chat", async function (req, res) {
 
     /* get chroma collection */
     const collection = await getCollection();
-
+    console.log("collection" , collection); 
     /* semantic search */
     const result = await collection.query({
       queryTexts: [question],
       nResults: 3,
     });
 
+    console.log("result" , result); 
+    
     const docs = result.documents?.[0] || [];
-
+     
     if (docs.length === 0) {
       return res.status(200).json({
         success: true,
@@ -41,29 +44,30 @@ router.post("/chat", async function (req, res) {
 
     /* build context */
     const context = docs.join("\n\n");
-
+    console.log("context" , context); 
     /* prompt */
     const prompt = `
-You are CollegeGPT, a helpful college assistant chatbot.
+          You are CollegeGPT, a helpful college assistant chatbot.
 
-Use ONLY the provided context to answer the question.
-If answer is not available in context, say:
-"I could not find that in the uploaded document."
+          Use ONLY the provided context to answer the question.
+          If answer is not available in context, say:
+          "I could not find that in the uploaded document."
 
-Context:
-${context}
+          Context:
+          ${context}
 
-Question:
-${question}
+          Question: 
+          ${question}
 
-Answer:
-`;
+          Answer:
+    `;
 
     /* Gemini response */
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
       contents: prompt,
     });
+    console.log("response" , response); 
 
     return res.status(200).json({
       success: true,

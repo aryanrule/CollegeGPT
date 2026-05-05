@@ -8,11 +8,11 @@ const app = express();
 const { ChromaClient } = require("chromadb");
 const {client} = require("./database/connectdb");
 
-async function test(){
-     const collection = await client.listCollections();
-     console.log(collection);
-}
-test();  
+// async function test(){
+//      const collection = await client.listCollections();
+//      console.log(collection);
+// }
+// test();  
 
 /* middlewares */
 app.use(cors());
@@ -39,3 +39,7 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+
+// & "C:\Users\Aryan Sharma\AppData\Roaming\Python\Python313\Scripts\chroma.exe" run --host localhost --port 8000 
+// // to run this 
