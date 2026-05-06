@@ -1,0 +1,45 @@
+“What is Rahul’s SGPA in sem 3?”
+“Who is HOD of CSE?”
+“What subjects are in 2nd year?”
+
+🎓 General College Questions
+What is Maharaja Surajmal Institute of Technology known for?
+Where is MSIT located?
+Which university is MSIT affiliated with?
+Is MSIT a good college for engineering?
+📘 Courses & Syllabus
+What branches are offered in B.Tech at MSIT?
+What subjects are taught in first year?
+What are the core subjects in CSE?
+Does MSIT include projects in the syllabus?
+🧑‍🏫 Faculty / HOD
+Who is the HOD of CSE?
+Name the head of IT department
+Who manages the ECE department?
+📊 Student Performance (Important for testing)
+What is Rahul Verma’s SGPA in Sem 2?
+Show marks of Priya Singh
+Who scored highest in Sem 4?
+Compare SGPA of two students
+💰 Fees & Admission
+What is the fee structure of MSIT?
+How can I get admission in MSIT?
+Is JEE Main required for MSIT?
+What is the admission process through Guru Gobind Singh Indraprastha University?
+💼 Placements
+What is the average package at MSIT?
+Which companies visit MSIT?
+What is the placement percentage?
+Does MSIT provide good placements?
+🏫 Infrastructure & Campus
+Does MSIT have a library?
+Are labs well-equipped?
+Is WiFi available on campus?
+🏠 Hostel & Facilities
+Does MSIT provide hostel facilities?
+What facilities are available in hostel?
+🚀 Advanced Queries (This impresses teachers a LOT)
+Give details about MSIT placements and fees
+Compare CSE and IT branches
+Summarize admission process
+List all facilities available in the campus
