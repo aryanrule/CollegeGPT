@@ -65,26 +65,26 @@ const ChatContextProvider = ({ children }: Props) => {
     setInput("");
 
     try {
-      // const response = await fetch(
-      //   "http://localhost:5000/api/v1/chat",
-      //   {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify({ question : question }),
-      //   }
-      // );
-      // console.log("response" , response);  
+      const response = await fetch(
+        "http://localhost:5000/api/v1/chat",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ question : question }),
+        }
+      );
+      console.log("response" , response);  
 
-      // const data = await response.json();
-      // console.log("data" , data);  
+      const data = await response.json();
+      console.log("data" , data);  
      
-      // // const responseInText =
-      // //   data?.response?.candidates?.[0]?.content?.parts?.[0]?.text || "";
+      // const responseInText =
+      //   data?.response?.candidates?.[0]?.content?.parts?.[0]?.text || "";
      
-      // const responseInText = data?.answer;
-      const responseInText = getdummyresponse();
+      const responseInText = data?.answer;
+      // const responseInText = getdummyresponse();
       // formatting bold (**text** → <b>text</b>)
       let responseArray = responseInText.split("**");
       let newResponse = "";
